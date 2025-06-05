@@ -1,4 +1,3 @@
-// backend/index.js
 const express = require('express');
 const app = express();
 
@@ -9,7 +8,7 @@ let tasks = [
   { id: 2, title: 'Read a book', completed: true }
 ];
 
-// GET /api/tasks — Return all tasks or filtered by status
+// GET /api/tasks 
 app.get('/api/tasks', (req, res) => {
   const { status } = req.query;
   let filteredTasks = tasks;
@@ -23,7 +22,7 @@ app.get('/api/tasks', (req, res) => {
   res.json(filteredTasks);
 });
 
-// POST /api/tasks — Add a new task (with validation)
+// POST /api/tasks
 app.post('/api/tasks', (req, res) => {
   const { title } = req.body;
   if (!title || title.trim() === '') {
@@ -49,7 +48,7 @@ app.put('/api/tasks/:id', (req, res) => {
   res.json(task);
 });
 
-// DELETE /api/tasks/:id — Delete a task
+// DELETE /api/tasks/:id 
 app.delete('/api/tasks/:id', (req, res) => {
   const taskId = parseInt(req.params.id);
   const index = tasks.findIndex(t => t.id === taskId);
